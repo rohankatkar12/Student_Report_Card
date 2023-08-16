@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container mt-5">    
+
+        {% if messages %}
+        <div class="alert alert-primary" role="alert">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+    <h4>Student Name : {{ queryset.first.student }}</h4>
+    <h4>Rank : {{queryset.first.student.studentreportcard.first.student_rank}}</h4>
+    <h4>Total Score: {{total.total}}/700</h4>
+    <h4>Date of Result : {{queryset.first.student.studentreportcard.first.date_of_report_card_geaneration}}</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr  align="center">
+            <th scope="col">Sr. No.</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Marks</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in queryset %}
+            <tr align="center">
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{student.subject.subject_name}}</td>
+            <td>{{student.marks}}</td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+{% endblock %}
