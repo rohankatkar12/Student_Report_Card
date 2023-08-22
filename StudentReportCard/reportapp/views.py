@@ -3,13 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.db.models import Q, Sum
 from .forms import *
 from .models import *
 
-User = get_user_model()
+#User = get_user_model()
 
 def register_page(request):
     if request.method == "POST":
